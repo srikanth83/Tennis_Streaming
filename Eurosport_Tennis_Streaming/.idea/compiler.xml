@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Eurosport_Tennis_Streaming" />
+        <module name="Tennis_Streaming" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Tennis_Streaming" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

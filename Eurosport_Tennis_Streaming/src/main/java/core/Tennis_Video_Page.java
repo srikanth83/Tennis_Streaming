@@ -1,5 +1,6 @@
 package core;
 
+import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class Tennis_Video_Page {
@@ -112,5 +116,22 @@ public class Tennis_Video_Page {
         Actions builder = new Actions(cucumberPageWrapper.driver);
         builder.moveToElement(cucumberPageWrapper.driver.findElement(By.cssSelector("video[id*='vjs_video']"))).perform();
     }
+
+    public String getCurrentUrl(){
+       return cucumberPageWrapper.driver.getCurrentUrl();
+    }
+
+    public List<String> getListOfFamousTennisTournaments(){
+        cucumberPageWrapper.driver.manage().window().maximize();
+        List<String> tennisTournaments = new ArrayList<>();
+        List<WebElement> tournaments = cucumberPageWrapper.driver.findElements(By.cssSelector("#nav_category .categorylist .categorylist__item"));
+
+        for(WebElement tournament : tournaments){
+            tennisTournaments.add(tournament.getText());
+        }
+
+        return tennisTournaments;
+    }
+
 
 }

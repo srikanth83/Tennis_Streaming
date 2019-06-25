@@ -1,11 +1,13 @@
 package Step_Definitions;
 
+import core.CucumberPageWrapper;
 import core.Tennis_Video_Page;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.After;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -91,10 +93,31 @@ public class Tennis_Streaming_Step_Definitions {
     public void iSelectTennisFromToggleMenu() {
 
         tennis_video_page.toggle_Menu().click();
+        tennis_video_page.select_Tennis_From_Hanmburg_Menu().click();
     }
 
     @And("^select tennis from hamburg menu$")
     public void selectTennisFromHamburgMenu() {
         tennis_video_page.select_Tennis_From_Hanmburg_Menu().click();
     }
+
+
+    @Then("^I should be navigated to tennis video page$")
+    public void iShouldBeNavigatedToTennisVideoPage() {
+        Assert.assertTrue(tennis_video_page.getCurrentUrl().contains("tennis"));
+        tennis_video_page.acceptCookiesButton().click();
+    }
+
+    @And("^the following list of top tennis events should be displayed on the header of the page$")
+    public void theFollowingListOfTopTennisEventsShouldBeDisplayedOnTheHeaderOfThePage(DataTable table) {
+        List<String> totalList = table.asList(String.class);
+        List<String> tennisTournaments = tennis_video_page.getListOfFamousTennisTournaments();
+
+        for(int i=1;i<tennisTournaments.size();i++){
+            Assert.assertEquals(totalList.get(i-1),tennisTournaments.get(i));
+        }
+    }
+
+
+
 }

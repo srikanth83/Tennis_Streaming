@@ -1,6 +1,7 @@
 package core;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -55,11 +56,10 @@ public class CucumberPageWrapper  {
     }
 
 
-    @After
     @PreDestroy
     public void cleanUp()
     {
-        driver.quit();
+        driver.close();
 
     }
 
