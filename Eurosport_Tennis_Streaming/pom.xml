@@ -17,7 +17,7 @@
         <cucumber-java-version>1.2.5</cucumber-java-version>
         <cucumber-spring-version>1.2.5</cucumber-spring-version>
         <selenium-version>3.141.5</selenium-version>
-        <spring-core-version>4.2.2.RELEASE</spring-core-version>
+        <spring-core-version>5.3.18</spring-core-version>
         <spring-beans-version>4.2.2.RELEASE</spring-beans-version>
         <spring-context-version>4.2.2.RELEASE</spring-context-version>
         <spring-test-version>4.2.2.RELEASE</spring-test-version>
